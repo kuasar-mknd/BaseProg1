@@ -17,6 +17,10 @@ public class series2 {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
                 case 3 -> exercice3();
+                case 4 -> exercice4();
+                case 5-> exercice5();
+                case 6 -> exercice6();
+
             }
         }
     }
@@ -53,6 +57,51 @@ public class series2 {
     }
 
     static  void exercice4(){
-        
+        Scanner input = new Scanner(System.in);
+        int intInput;
+
+        System.out.print("\nVeuillez saisir un chiffre : ");
+        intInput = input.nextInt();
+
+        String[] result = { "Positif", "Negatif" };
+
+        // checks if the number is positive or negative
+        String strResult = result[(intInput >> 31) & 1];
+
+        System.out.println("Le chiffre " + intInput + " est-il positif ou négatif ? : " + strResult);
+    }
+
+    static  void exercice5(){
+        Scanner input = new Scanner(System.in);
+        int intInput;
+        int ans;
+
+        System.out.print("\nVeuillez saisir un chiffre : ");
+        intInput = input.nextInt();
+        ans = Integer.signum(intInput);
+
+        if (ans == 0)
+            System.out.print("Le chiffre " + intInput + " est égal à zéro");
+        else if (ans == 1)
+            System.out.print("Le chiffre " + intInput + " est positif");
+        else
+            System.out.print("Le chiffre " + intInput + " est négatif");
+    }
+
+    static void exercice6(){
+        Scanner input = new Scanner(System.in);
+        float intA;
+        float intB;
+        float intX = 0;
+
+        System.out.println("\nSoit l'équation ax + b = 0");
+        System.out.print("\tVeuilez choisir une valeur pour a : ");
+        intA = input.nextFloat();
+        System.out.print("\n\tVeuilez choisir une valeur pour b : ");
+        intB = input.nextFloat();
+
+        intX = (intX-intB)/intA;
+
+        System.out.println("La valeur de x pour que l'équation soit correcte est " + intX);
     }
 }
