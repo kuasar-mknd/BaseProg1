@@ -1,5 +1,6 @@
 package ch.comem.dulex.series2;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class series2 {
@@ -15,6 +16,7 @@ public class series2 {
             switch (intChoice) {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
+                case 3 -> exercice3();
             }
         }
     }
@@ -37,6 +39,20 @@ public class series2 {
         chaInput = input.next().charAt(0);
 
         System.out.println("Le charactère " + chaInput + " est-il un charatère majuscule ? : " + Character.isUpperCase(chaInput));
+    }
 
+    static  void exercice3(){
+        Scanner input = new Scanner(System.in);
+        String strVoyelle = "aeiouy";
+        char chaInput;
+
+        System.out.print("\nVeuillez saisir une lettre : ");
+        chaInput = input.next().toLowerCase().charAt(0);
+
+        System.out.println("Le charactère " + chaInput + " est-il une voyelle ? : " + strVoyelle.contains(Character.toString(chaInput)));
+    }
+
+    static  void exercice4(){
+        
     }
 }
