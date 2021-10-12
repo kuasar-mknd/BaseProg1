@@ -2,7 +2,7 @@ package ch.comem.dulex;
 import java.util.*;
 
 
-public class Main {
+public class series1 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
