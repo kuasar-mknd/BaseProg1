@@ -1,5 +1,8 @@
 package ch.comem.dulex.series2;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -22,6 +25,10 @@ public class series2 {
                 case 6 -> exercice6();
                 case 7 -> exercice7();
                 case 8 -> exercice8();
+                case 9 -> exercice9();
+                case 10 -> exercice10();
+                case 11 -> exercice11();
+                case 12 -> exercice12();
 
             }
         }
@@ -141,7 +148,7 @@ public class series2 {
         int maxFlightReduce = 20;
         int middleFlightReduce = 15;
         int numberOfFlight;
-        int reduction=0;
+        int reduction = 0;
         float flightPrice = 0;
         float finalPrice;
 
@@ -157,29 +164,162 @@ public class series2 {
         System.out.print("\nEntrez le nombre de vols effectués avec notre compagnie : ");
         numberOfFlight = input.nextInt();
 
-        switch (typeAnswer){
+        switch (typeAnswer) {
             case 1 -> reduction += 0;
             case 2 -> reduction += typeEmployed;
             case 3 -> reduction += typeCigogne;
         }
 
-        if(numberOfFlight>minFlight){
-            if (numberOfFlight<maxFlight){
+        if (numberOfFlight > minFlight) {
+            if (numberOfFlight < maxFlight) {
                 reduction += middleFlightReduce;
-            }
-            else {
+            } else {
                 reduction += maxFlightReduce;
             }
-        }
-        else if(numberOfFlight == minFlight){
+        } else if (numberOfFlight == minFlight) {
             reduction += minFlightReduce;
         }
 
-        finalPrice = (100-reduction)*flightPrice/100;
+        finalPrice = (100 - reduction) * flightPrice / 100;
 
-        System.out.println("Prix de base : "+flightPrice);
-        System.out.println("Votre rabais : "+reduction);
-        System.out.println("Votre prix : " + Math.round(finalPrice * 10000)/10000);
+        System.out.println("Prix de base : " + flightPrice);
+        System.out.println("Votre rabais : " + reduction);
+        System.out.println("Votre prix : " + Math.round(finalPrice * 10000) / 10000);
 
+    }
+
+    static void exercice9() {
+        Scanner input = new Scanner(System.in);
+        DecimalFormat formatFinal = new DecimalFormat("0.00");
+        int personAge;
+        String dayWeek;
+        int childAge = 7;
+        int childPrice = 5;
+        int youngAge = 18;
+        int youngPrice = 10;
+        int otherPrice = 15;
+        int finalPromo = 0;
+        int finalPrice;
+
+        String[][] arrWeek = {{"lundi", "20"}, {"mardi", "10"}, {"mercredi", "0"}, {"jeudi", "10"}, {"vendredi", "0"}, {"samedi", "0"}, {"dimanche", "0"}};
+
+        System.out.print("\nSaissez l'âge de la personne : ");
+        personAge = input.nextInt();
+
+        System.out.print("\nVeuillez entrer le nom du jour en miniscule (Ex: lundi) : ");
+        dayWeek = input.next();
+        for (String[] strings : arrWeek) {
+            if (strings[0].equals(dayWeek)) {
+                finalPromo += Integer.parseInt(strings[1]);
+            }
+        }
+
+        if (personAge <= childAge) {
+            finalPrice = childPrice - (childPrice * finalPromo / 100);
+            System.out.println("Prix de base : " + childPrice);
+        } else {
+            if (personAge <= youngAge) {
+                finalPrice = youngPrice - (youngPrice * finalPromo / 100);
+                System.out.println("Prix de base : " + youngPrice);
+            } else {
+                finalPrice = otherPrice - (otherPrice * finalPromo / 100);
+                System.out.println("Prix de base : " + otherPrice);
+            }
+        }
+
+        System.out.println("Votre rabais : " + finalPromo + "%");
+        System.out.println("Votre prix : " + formatFinal.format(Math.round(finalPrice * 2.0) / 2.0) + " chf");
+
+    }
+
+    static void exercice10() {
+        Scanner input = new Scanner(System.in);
+        DecimalFormat formatFinal = new DecimalFormat("0.00");
+        int[][] arrPromo = {{50, 3}, {100, 5}, {1000, 10}};
+        float[][] arrTVA = {{0, 8.2F}, {250, 6.3F}, {500, 4.5F}};
+        int quantity;
+        int finalPromo = 0;
+        float finalTVA = 0;
+        float pricePiece;
+        float finalPrice;
+
+        System.out.print("\nCombien de pièces voulez-vous acheter ? : ");
+        quantity = input.nextInt();
+
+        System.out.print("\nQuel est le prix unitaire de la pièce ? : ");
+        pricePiece = input.nextFloat();
+
+        for (int[] ints : arrPromo) {
+            if (quantity > ints[0]) {
+                finalPromo = ints[1];
+            }
+        }
+
+        for (float[] floats : arrTVA) {
+            if (quantity > floats[0]) {
+                finalTVA = floats[1];
+            }
+        }
+
+        finalPrice = (quantity * pricePiece) - (quantity * pricePiece * finalPromo / 100) + (quantity * pricePiece * finalTVA / 100);
+
+        System.out.println("Le prix TTC pour " + quantity + " pièces à " + pricePiece + ".- avec un rabais de " + finalPromo + "% et un taux TVA à " + finalTVA + "% sera de : " + formatFinal.format(Math.round(finalPrice*10.0)/10.0) + ".-");
+
+    }
+
+    static void exercice11() {
+        Scanner input = new Scanner(System.in);
+        boolean status = false;
+        String pattern = "(0?[1-9]|[12][0-9]|3[01])\\/(0?[1-9]|1[0-2])\\/([0-9]{4})";
+        boolean flag = false;
+        int dayDate;
+        int monthDate;
+        int yearDate;
+
+        System.out.print("\nVeuillez saisir le jour : ");
+        dayDate = input.nextInt();
+
+        System.out.print("\nVeuillez saisir le mois : ");
+        monthDate = input.nextInt();
+
+        System.out.print("\nVeuillez saisir l'année : ");
+        yearDate = input.nextInt();
+
+        String date = dayDate + "/" + monthDate + "/" + yearDate;
+
+        if (date.matches(pattern)) {
+            flag = true;
+        }
+        if (flag) {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            dateFormat.setLenient(false);
+            try {
+                dateFormat.parse(date);
+                status = true;
+            } catch (Exception ignored) {
+            }
+        }
+
+        if (status)
+            System.out.println("La date du " + dayDate + "." + monthDate + "." + yearDate + " est valide");
+        else
+            System.out.println("La date du " + dayDate + "." + monthDate + "." + yearDate + " est invalide");
+    }
+
+    static void exercice12() {
+        Scanner input = new Scanner(System.in);
+        int countFive;
+        int countTwo;
+        int countOne;
+
+        System.out.print("\nVeuillez saisir la somme à décomposer : ");
+        int moneyValue = input.nextInt();
+
+        countFive = moneyValue % 5;
+        countTwo = (moneyValue - (countFive * 5)) % 2;
+        countOne = moneyValue - (countFive * 5) - (countTwo * 2);
+        System.out.println("\t" + countFive + " pièces de 5.-");
+        System.out.println("\t" + countTwo + " pièces de 2.-");
+        System.out.println("\t" + countOne + " pièces de 1.-");
     }
 }
