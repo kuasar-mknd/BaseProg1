@@ -17,25 +17,25 @@ public class series3 {
 
             switch (intChoice) {
                 case 1 -> exercice1();
+                case 2 -> exercice2();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
     }
 
-    static void exercice1(){
+    static void exercice1() {
         Scanner input = new Scanner(System.in);
 
-        int[] arrValue = {1,3};
-        int value=0;
+        int[] arrValue = {1, 3};
+        int value = 0;
         boolean flag = true;
 
-        while (flag){
+        while (flag) {
             System.out.print("\nVeuillez saisir un nombre dans l'intervalle " + Arrays.toString(arrValue) + " : ");
             value = input.nextInt();
-            if (value >= arrValue[0] && value <= arrValue[1]){
+            if (value >= arrValue[0] && value <= arrValue[1]) {
                 flag = false;
-            }
-            else {
+            } else {
                 System.out.println("La valeur " + value + " ne fait pas partie de l'intervalle spécifié...");
             }
         }
@@ -43,8 +43,24 @@ public class series3 {
         System.out.println("La valeur : " + value + " est correcte :-)");
     }
 
-    static void exercice2(){
+    static void exercice2() {
         Scanner input = new Scanner(System.in);
-        
+
+        int value = 0;
+        boolean flag = true;
+
+        while (flag) {
+            System.out.print("\nVeuillez saisir un nombre strictement positif : ");
+            value = input.nextInt();
+            if (value > 0) {
+                flag = false;
+            } else {
+                System.out.println("Le nombre n'est pas strictement positif");
+            }
+        }
+        System.out.println("Compte à rebours à partir de " + value);
+        for (int i=value; i>=0; i--){
+            System.out.println(i);
+        }
     }
 }
