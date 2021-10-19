@@ -9,7 +9,6 @@ public class series1 {
         Scanner input = new Scanner(System.in);
         int intChoice;
 
-
         while (true) {
             System.out.print("\n\nQuel exercice voulez-vous exécuter ? : ");
             intChoice = input.nextInt();
