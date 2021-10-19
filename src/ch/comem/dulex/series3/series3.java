@@ -22,6 +22,12 @@ public class series3 {
                 case 4 -> exercice4();
                 case 5 -> exercice5();
                 case 6 -> exercice6();
+                case 7 -> exercice7();
+                case 8 -> exercice8();
+                case 9 -> exercice9();
+                case 10 -> exercice10();
+                case 11 -> exercice11();
+                case 12 -> exercice12();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -145,5 +151,140 @@ public class series3 {
         }
 
         System.out.println("Il y a " + count + " nombre(s) <= 15");
+    }
+
+    static void exercice7(){
+        Scanner input=new Scanner(System.in);
+        int minValue = 1, maxValue, finalResult = 0;
+
+        System.out.print("Entrez la valeur maximale : ");
+        maxValue= input.nextInt();
+
+        for(int i = minValue; i<maxValue; i++){
+            finalResult += i;
+            System.out.print(i + " + ");
+        }
+
+        finalResult += maxValue;
+        System.out.print(maxValue + " = " + finalResult);
+
+    }
+
+    static void exercice8(){
+        Scanner input=new Scanner(System.in);
+        int minValue = 1, maxValue, finalResult = 1;
+
+        System.out.print("Entrez la valeur maximale : ");
+        maxValue= input.nextInt();
+
+        for(int i = minValue; i<maxValue; i++){
+            finalResult = finalResult * i;
+            System.out.print(i + " x ");
+        }
+
+        finalResult = finalResult * maxValue;
+        System.out.print(maxValue + " = " + finalResult);
+    }
+
+    static void exercice9(){
+        Scanner input=new Scanner(System.in);
+        float[] arrayNote;
+        float minNote = 1, maxNote = 6, sum = 0, averageNote;
+        int countNote;
+
+        System.out.print("Saissisez le nombre de notes : ");
+        countNote = input.nextInt();
+        arrayNote = new float[countNote];
+
+        for(int i = 0; i < arrayNote.length; ++i){
+            System.out.print("Saissisez la note " + (i+1) + " : ");
+            arrayNote[i] = input.nextFloat();
+        }
+
+        for( float num : arrayNote) {
+            sum = sum+num;
+        }
+
+        averageNote = sum/ arrayNote.length;
+
+        Arrays.sort(arrayNote);
+
+        System.out.println("La moyenne est de : " + averageNote);
+        System.out.println("La note la plus élevée est de " + arrayNote[arrayNote.length-1]);
+
+    }
+
+    static void exercice10(){
+        Scanner input=new Scanner(System.in);
+
+        float minNote = 1, maxNote = 6, sum = 0, averageNote, transferValue, maxUserNote=1;
+        int i = 1;
+        boolean flag=true;
+
+        while(flag){
+            System.out.print("Saissisez la note " + (i+1) + " : ");
+            transferValue = input.nextInt();
+            if(transferValue>=minNote && transferValue<= maxNote) {
+                sum += transferValue;
+                i++;
+                if(transferValue>maxUserNote){
+                    maxUserNote=transferValue;
+                }
+            }
+            else{
+                System.out.println("La note " + transferValue + " n'a pas été prise en compte !");
+                flag=false;
+            }
+        }
+        averageNote = sum/ i;
+
+        System.out.println("La moyenne est de : " + averageNote);
+        System.out.println("La note la plus élevée est de " + maxUserNote);
+    }
+
+    static void exercice11(){
+        Scanner input=new Scanner(System.in);
+
+        int n1=0,n2=1,n3,i,count;
+
+        System.out.print("Quel est l'ordre du nombre de Fibonacci à calculer ? (>=0) : ");
+        count = input.nextInt()+1;
+
+        System.out.println("f("+ n1 +") = "+n1);
+        System.out.println("f("+ n2 +") = "+n2);
+
+        for(i=2;i<count;++i)
+        {
+            n3=n1+n2;
+            System.out.println("f("+ i +") = "+n3);
+            n1=n2;
+            n2=n3;
+        }
+    }
+
+    static void exercice12(){
+        Scanner input=new Scanner(System.in);
+
+        int chessboardLenght = 8;
+        char chessboardBlack = '#';
+        char chessboardWhite = 'o';
+        boolean lastCase = true; // True = black and False = white
+
+        for(int i=0;i<chessboardLenght;i++) {
+            for (int j = 0; j < chessboardLenght; j++) {
+                if (lastCase) {
+                    System.out.print(chessboardWhite + " ");
+                    lastCase=false;
+                } else {
+                    System.out.print(chessboardBlack + " ");
+                    lastCase=true;
+                }
+            }
+            lastCase = !lastCase;
+            System.out.print("\n");
+        }
+
+
+
     }
 }
