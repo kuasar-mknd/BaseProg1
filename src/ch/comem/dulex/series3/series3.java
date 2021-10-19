@@ -18,6 +18,7 @@ public class series3 {
             switch (intChoice) {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
+                case 3 -> exercice3();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -62,5 +63,24 @@ public class series3 {
         for (int i=value; i>=0; i--){
             System.out.println(i);
         }
+    }
+
+    static void exercice3(){
+        Scanner input = new Scanner(System.in);
+
+        int lowestValue = 1, highestValue;
+
+        System.out.println("Ce programme affiche les nombres paires entre " + lowestValue + " et une limite supérieur saisie par l'utilisateur.");
+        System.out.print("Entrez la limite supérieure (>=2) des nombres pairs à afficher : ");
+        highestValue = input.nextInt();
+
+        System.out.println("Liste des nombres pairs entre " +lowestValue + " et " + highestValue +" est :");
+
+        for(int i=lowestValue; i<=highestValue; i++){
+            if(i%2==0){
+                System.out.println(i);
+            }
+        }
+
     }
 }
