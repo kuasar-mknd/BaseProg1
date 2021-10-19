@@ -95,7 +95,7 @@ public class series3 {
 
     static void exercice4() {
         Scanner input = new Scanner(System.in);
-        float capital = 0, interest = 0;
+        float capital, interest;
         int period = 0;
 
         System.out.print("Entrez le capital (>0) de départ : ");
@@ -189,7 +189,7 @@ public class series3 {
     static void exercice9() {
         Scanner input = new Scanner(System.in);
         float[] arrayNote;
-        float minNote = 1, maxNote = 6, sum = 0, averageNote;
+        float minNote = 1, maxNote = 6, sum = 0, averageNote, transferValue;
         int countNote;
 
         System.out.print("Saissisez le nombre de notes : ");
@@ -198,7 +198,10 @@ public class series3 {
 
         for (int i = 0; i < arrayNote.length; ++i) {
             System.out.print("Saissisez la note " + (i + 1) + " : ");
-            arrayNote[i] = input.nextFloat();
+            transferValue = input.nextFloat();
+            if (transferValue >= minNote && transferValue <= maxNote) {
+                arrayNote[i] = transferValue;
+            }
         }
 
         for (float num : arrayNote) {
