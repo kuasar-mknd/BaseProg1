@@ -19,6 +19,7 @@ public class series3 {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
                 case 3 -> exercice3();
+                case 4 -> exercice4();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -82,5 +83,26 @@ public class series3 {
             }
         }
 
+    }
+
+    static void exercice4(){
+        Scanner input = new Scanner(System.in);
+        float capital = 0, interest = 0;
+        int period = 0;
+
+        System.out.print("Entrez le capital (>0) de départ : ");
+        capital=input.nextFloat();
+
+        System.out.print("Entrez le taux d'intérêt en % : ");
+        interest=input.nextFloat();
+
+        System.out.print("Entrez le nombre de prériodes (>0) : ");
+        period=input.nextInt();
+
+        System.out.println("Une somme de " + capital + " placée durant " + period + " période(s) avec un taux d'intérêt de " + interest + "% génère :");
+        for(int i=period;i>0;i--){
+            capital = capital + (capital*interest/100);
+            System.out.println("après " + period + " période(s) : " + capital);
+        }
     }
 }
