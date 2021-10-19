@@ -20,6 +20,8 @@ public class series3 {
                 case 2 -> exercice2();
                 case 3 -> exercice3();
                 case 4 -> exercice4();
+                case 5 -> exercice5();
+                case 6 -> exercice6();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -104,5 +106,44 @@ public class series3 {
             capital = capital + (capital*interest/100);
             System.out.println("après " + period + " période(s) : " + capital);
         }
+    }
+
+    static void exercice5(){
+        Scanner input=new Scanner(System.in);
+
+        int[] arrayValue = new int[5];
+
+        for(int i = 0; i < arrayValue.length; ++i){
+            System.out.print("Entrez le nombre " + (i+1) +" : ");
+            arrayValue[i] = input.nextInt();
+        }
+
+        Arrays.sort(arrayValue);
+
+        System.out.println("Le plus petit nombre saisi est : " + arrayValue[0]);
+        System.out.println("Le plus grand nombre saisi est : " + arrayValue[arrayValue.length-1]);
+
+    }
+
+    static void exercice6(){
+        Scanner input=new Scanner(System.in);
+
+        int[] arrayValue = new int[5];
+        int minimumValue = 15, count = 0;
+
+        for(int i = 0; i < arrayValue.length; ++i){
+            System.out.print("Entrez le nombre " + (i+1) +" : ");
+            arrayValue[i] = input.nextInt();
+        }
+
+        Arrays.sort(arrayValue);
+
+        for(int i: arrayValue){
+            if(i <= minimumValue){
+                count++;
+            }
+        }
+
+        System.out.println("Il y a " + count + " nombre(s) <= 15");
     }
 }
