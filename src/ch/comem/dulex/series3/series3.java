@@ -274,14 +274,16 @@ public class series3 {
         for (int i = 0; i < chessboardLenght; i++) {
             for (int j = 0; j < chessboardLenght; j++) {
                 if (lastCase) {
-                    System.out.print(chessboardWhite + " ");
+                    System.out.print(chessboardWhite + "  ");
                     lastCase = false;
                 } else {
-                    System.out.print(chessboardBlack + " ");
+                    System.out.print(chessboardBlack + "  ");
                     lastCase = true;
                 }
             }
-            lastCase = !lastCase;
+            if(chessboardLenght%2==0) {
+                lastCase = !lastCase;
+            }
             System.out.print("\n");
         }
 
