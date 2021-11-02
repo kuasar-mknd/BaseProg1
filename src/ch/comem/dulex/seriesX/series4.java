@@ -20,6 +20,7 @@ public class series4 {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
                 case 3 -> exercice3();
+                case 4 -> exercice4();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -59,5 +60,13 @@ public class series4 {
         if (!flag){
             System.out.println(target + " ne se trouve pas dans la file");
         }
+    }
+
+    static void exercice4(){
+        String[] arrayName = {"Aline", "Roger", "Julia", "Steven", "Jules"};
+
+        System.out.println("Avant : " + Arrays.asList(arrayName));
+        Collections.reverse(Arrays.asList(arrayName));
+        System.out.println("Après : " + Arrays.asList(arrayName));
     }
 }
