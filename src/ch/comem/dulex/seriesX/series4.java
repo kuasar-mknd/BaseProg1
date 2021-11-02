@@ -21,6 +21,8 @@ public class series4 {
                 case 2 -> exercice2();
                 case 3 -> exercice3();
                 case 4 -> exercice4();
+                case 5 -> exercice5();
+                case 6 -> exercice6();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -68,5 +70,47 @@ public class series4 {
         System.out.println("Avant : " + Arrays.asList(arrayName));
         Collections.reverse(Arrays.asList(arrayName));
         System.out.println("Après : " + Arrays.asList(arrayName));
+    }
+
+    static void exercice5(){
+        Float[] arrayTemp = {0.7F,2F,5.5F,9F,13F,16.3F,18.1F,17.6F,14.8F,10.1F,5F,2.3F};
+        Float[] arrayTempDeviate = new Float[arrayTemp.length];
+
+        Float tempMax, tempMin, tempAverage, tempExtend, tempDeviate, tempSum, tempDeviateSum;
+        tempMax=0F;
+        tempMin=0F;
+        tempSum=0F;
+        tempDeviateSum=0F;
+
+        Arrays.sort(arrayTemp);
+        tempMax=arrayTemp[arrayTemp.length-1];
+        tempMin=arrayTemp[0];
+
+        for (Float aFloat : arrayTemp) {
+            tempSum += aFloat;
+        }
+
+        tempAverage = tempSum / arrayTemp.length;
+
+        tempExtend = tempMax-tempMin;
+
+        for (int i =0; i<arrayTemp.length;i++){
+            arrayTempDeviate[i] = Math.abs(arrayTemp[i]-tempAverage);
+        }
+
+        for (Float aFloat : arrayTempDeviate) {
+            tempDeviateSum += aFloat;
+        }
+
+        tempDeviate = tempDeviateSum / arrayTempDeviate.length;
+
+        System.out.println("Max : " + tempMax);
+        System.out.println("Min : " + tempMin);
+        System.out.println("Etendue : " + tempExtend);
+        System.out.println("Moyenne : " + tempAverage);
+        System.out.println("Déviation moyenne : " + tempDeviate);
+    }
+
+    static void exercice6(){
     }
 }
