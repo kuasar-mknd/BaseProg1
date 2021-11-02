@@ -1,7 +1,8 @@
-package ch.comem.dulex.seriesX;
+package ch.comem.dulex.series4;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -112,5 +113,26 @@ public class series4 {
     }
 
     static void exercice6(){
+        Integer[] arrayRandom = new Integer[100];
+        Integer[] counterIterator =  new Integer[10];
+        Random randNum = new Random();
+
+        Arrays.setAll(arrayRandom, i -> randNum.nextInt(10));
+        Arrays.setAll(counterIterator, i -> 0);
+
+        for (Integer integer : arrayRandom) {
+            if (integer >= 0 && integer < counterIterator.length) {
+                counterIterator[integer]++;
+            }
+        }
+
+        for (int i = 0; i < counterIterator.length; i++) {
+            System.out.println(i + " => " + counterIterator[i] + " occurrences");
+        }
+
+    }
+
+    static void exercice7(){
+        
     }
 }
