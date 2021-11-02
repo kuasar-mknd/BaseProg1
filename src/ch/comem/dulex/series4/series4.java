@@ -24,6 +24,7 @@ public class series4 {
                 case 4 -> exercice4();
                 case 5 -> exercice5();
                 case 6 -> exercice6();
+                case 7 -> exercice7();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -133,6 +134,11 @@ public class series4 {
     }
 
     static void exercice7(){
-        
+        Scanner input = new Scanner(System.in);
+
+        String sentence = input.nextLine();
+        String[] arrayWords = sentence.split("\\W+");
+
+        System.out.println(Arrays.asList(arrayWords));
     }
 }
