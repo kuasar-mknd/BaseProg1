@@ -25,6 +25,7 @@ public class series4 {
                 case 5 -> exercice5();
                 case 6 -> exercice6();
                 case 7 -> exercice7();
+                case 8 -> exercice8();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -140,5 +141,30 @@ public class series4 {
         String[] arrayWords = sentence.split("\\W+");
 
         System.out.println(Arrays.asList(arrayWords));
+    }
+
+    static void exercice8(){
+        int n = 12;
+        int maxNote = 6;
+        Integer[] arrayRandom = new Integer[n];
+        Integer[] counterIterator =  new Integer[maxNote+1];
+        Random randNum = new Random();
+
+        Arrays.setAll(arrayRandom, i -> randNum.nextInt(maxNote)+1);
+        Arrays.setAll(counterIterator, i -> 0);
+
+        for (Integer integer : arrayRandom) {
+            if (integer >= 0 && integer < counterIterator.length) {
+                counterIterator[integer]++;
+            }
+        }
+
+        for (int i = 0; i < counterIterator.length; i++) {
+            System.out.print(i + " ");
+            for (int j =0; j< counterIterator[i]; j++){
+                System.out.print("X");
+            }
+            System.out.print("\n");
+        }
     }
 }
