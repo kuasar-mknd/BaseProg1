@@ -26,6 +26,7 @@ public class series4 {
                 case 6 -> exercice6();
                 case 7 -> exercice7();
                 case 8 -> exercice8();
+                case 9 -> exercice9();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -159,12 +160,68 @@ public class series4 {
             }
         }
 
-        for (int i = 0; i < counterIterator.length; i++) {
+        for (int i = 1; i < counterIterator.length; i++) {
             System.out.print(i + " ");
             for (int j =0; j< counterIterator[i]; j++){
                 System.out.print("X");
             }
             System.out.print("\n");
         }
+    }
+
+    static void exercice9(){
+        int n = 12;
+        int maxValue = 0;
+        int maxNote = 6;
+
+        Integer[] arrayRandom = new Integer[n];
+        Integer[] counterIterator =  new Integer[maxNote+1];
+        String[][] arrayFinal;
+
+        Random randNum = new Random();
+
+        Arrays.setAll(arrayRandom, i -> randNum.nextInt(maxNote)+1);
+        Arrays.setAll(counterIterator, i -> 0);
+
+        for (Integer integer : arrayRandom) {
+            if (integer >= 0 && integer < counterIterator.length) {
+                counterIterator[integer]++;
+            }
+        }
+
+        for (int i = 1; i < counterIterator.length; i++)
+        {
+            if (counterIterator[i] > maxValue)
+            {
+                maxValue = counterIterator[i];
+            }
+        }
+
+        arrayFinal = new String[maxValue+1][maxNote];
+
+        for (int i = 0; i < maxNote; i++) {
+            arrayFinal[maxValue][i] = Integer.toString(i+1);
+        }
+
+        for (int i = 1; i < maxNote; i++) {
+            for (int j = counterIterator[i]; j > 0; j--) {
+                arrayFinal[(maxValue-j)][i-1] = "X";
+            }
+        }
+
+        for (String[] x : arrayFinal)
+        {
+            for (String y : x)
+            {
+                if(y == null){
+                    System.out.print("\t");
+                }
+                else{
+                    System.out.print(y + "\t");
+                }
+            }
+            System.out.println();
+        }
+
     }
 }
