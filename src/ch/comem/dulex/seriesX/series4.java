@@ -1,5 +1,7 @@
 package ch.comem.dulex.seriesX;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -16,6 +18,7 @@ public class series4 {
 
             switch (intChoice) {
                 case 1 -> exercice1();
+                case 2 -> exercice2();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -26,6 +29,14 @@ public class series4 {
         for (int i=arrayToInverse.length-1; i>=0; i--){
             System.out.println(arrayToInverse[i]);
         }
+    }
+
+    static void exercice2(){
+        Integer[] arrayToInverse = {1,2,3,4,5,6,7,8,9};
+
+        System.out.println("Avant : " + Arrays.asList(arrayToInverse));
+        Collections.reverse(Arrays.asList(arrayToInverse));
+        System.out.println("Après : " + Arrays.asList(arrayToInverse));
     }
     
 }
