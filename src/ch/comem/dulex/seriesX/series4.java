@@ -19,6 +19,7 @@ public class series4 {
             switch (intChoice) {
                 case 1 -> exercice1();
                 case 2 -> exercice2();
+                case 3 -> exercice3();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -38,5 +39,25 @@ public class series4 {
         Collections.reverse(Arrays.asList(arrayToInverse));
         System.out.println("Après : " + Arrays.asList(arrayToInverse));
     }
-    
+
+    static void exercice3(){
+        Scanner input = new Scanner(System.in);
+
+        String[] arrayName = {"Aline", "Roger", "Julia", "Steven", "Jules"};
+        boolean flag=false;
+        String target;
+
+        System.out.print("Veuillez saisir un prénom : ");
+        target = input.next();
+        for (int i = 0; i < arrayName.length; i++)
+        {
+            if (target.equals(arrayName[i])) {
+                System.out.println(target + " se trouve en " + (i+1) + "e position dans la file");
+                flag = true;
+            }
+        }
+        if (!flag){
+            System.out.println(target + " ne se trouve pas dans la file");
+        }
+    }
 }
