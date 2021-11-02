@@ -72,7 +72,18 @@ public class series4 {
         String[] arrayName = {"Aline", "Roger", "Julia", "Steven", "Jules"};
 
         System.out.println("Avant : " + Arrays.asList(arrayName));
-        Collections.reverse(Arrays.asList(arrayName));
+
+        for(int i = 0; i < arrayName.length-1; i++){
+            int j;
+            String last;
+            last = arrayName[arrayName.length-1];
+
+            for(j = arrayName.length-1; j > 0; j--){
+                arrayName[j] = arrayName[j-1];
+            }
+            arrayName[0] = last;
+        }
+
         System.out.println("Après : " + Arrays.asList(arrayName));
     }
 
