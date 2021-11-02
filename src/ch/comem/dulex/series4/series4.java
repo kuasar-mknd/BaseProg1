@@ -92,8 +92,6 @@ public class series4 {
         Float[] arrayTempDeviate = new Float[arrayTemp.length];
 
         Float tempMax, tempMin, tempAverage, tempExtend, tempDeviate, tempSum, tempDeviateSum;
-        tempMax = 0F;
-        tempMin = 0F;
         tempSum = 0F;
         tempDeviateSum = 0F;
 
