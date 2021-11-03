@@ -8,8 +8,10 @@ public class series1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int intChoice;
+        boolean flag=true;
 
-        while (true) {
+
+        while (flag) {
             System.out.print("\n\nQuel exercice voulez-vous exécuter ? : ");
             intChoice = input.nextInt();
 
@@ -25,6 +27,7 @@ public class series1 {
                 case 9 -> exercice9();
                 case 10 -> exercice10();
                 case 11 -> exercice11();
+                case 0 -> flag = false;
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }

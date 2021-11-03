@@ -11,9 +11,10 @@ public class series4 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int intChoice;
+        boolean flag=true;
 
 
-        while (true) {
+        while (flag) {
             System.out.print("\n\nQuel exercice voulez-vous exécuter ? : ");
             intChoice = input.nextInt();
 
@@ -27,6 +28,7 @@ public class series4 {
                 case 7 -> exercice7();
                 case 8 -> exercice8();
                 case 9 -> exercice9();
+                case 0 -> flag = false;
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -91,7 +93,7 @@ public class series4 {
         Float[] arrayTemp = {0.7F, 2F, 5.5F, 9F, 13F, 16.3F, 18.1F, 17.6F, 14.8F, 10.1F, 5F, 2.3F};
         Float[] arrayTempDeviate = new Float[arrayTemp.length];
 
-        Float tempMax, tempMin, tempAverage, tempExtend, tempDeviate, tempSum, tempDeviateSum;
+        float tempMax, tempMin, tempAverage, tempExtend, tempDeviate, tempSum, tempDeviateSum;
         tempSum = 0F;
         tempDeviateSum = 0F;
 
@@ -130,7 +132,7 @@ public class series4 {
         Random randNum = new Random();
 
         Arrays.setAll(arrayRandom, i -> randNum.nextInt(10));
-        Arrays.setAll(counterIterator, i -> 0);
+        Arrays.fill(counterIterator, 0);
 
         for (Integer integer : arrayRandom) {
             if (integer >= 0 && integer < counterIterator.length) {
@@ -161,7 +163,7 @@ public class series4 {
         Random randNum = new Random();
 
         Arrays.setAll(arrayRandom, i -> randNum.nextInt(maxNote) + 1);
-        Arrays.setAll(counterIterator, i -> 0);
+        Arrays.fill(counterIterator, 0);
 
         for (Integer integer : arrayRandom) {
             if (integer >= 0 && integer < counterIterator.length) {
@@ -190,7 +192,7 @@ public class series4 {
         Random randNum = new Random();
 
         Arrays.setAll(arrayRandom, i -> randNum.nextInt(maxNote) + 1);
-        Arrays.setAll(counterIterator, i -> 0);
+        Arrays.fill(counterIterator, 0);
 
         for (Integer integer : arrayRandom) {
             if (integer >= 0 && integer < counterIterator.length) {
