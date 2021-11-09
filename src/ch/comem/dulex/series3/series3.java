@@ -1,6 +1,7 @@
 package ch.comem.dulex.series3;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -30,6 +31,7 @@ public class series3 {
                 case 12 -> exercice12();
                 case 13 -> exercice13();
                 case 14 -> exercice14();
+                case 15 -> exercice15();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -336,5 +338,26 @@ public class series3 {
             int sum = i * userInput;
             System.out.println(i + " x " +userInput + " = " + sum);
         }
+    }
+
+    static void exercice15(){
+        Random random = new Random();
+        int numberOfLaunch = 1000;
+        int rand;
+        int numberOfOne = 0;
+        int numberOfTwo = 0;
+
+        for (int i = 0; i < numberOfLaunch; i++) {
+            rand = random.nextInt(2) + 1;
+            if(rand == 1) {
+                numberOfOne++;
+            }
+            else if(rand == 2) {
+                numberOfTwo++;
+            }
+        }
+
+        System.out.println("Pile : " + numberOfOne);
+        System.out.println("Face : " + numberOfTwo);
     }
 }
