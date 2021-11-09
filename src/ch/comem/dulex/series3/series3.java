@@ -29,6 +29,7 @@ public class series3 {
                 case 11 -> exercice11();
                 case 12 -> exercice12();
                 case 13 -> exercice13();
+                case 14 -> exercice14();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -322,6 +323,18 @@ public class series3 {
             if(i%2 == 0 && i%7 == 0 && i%3 !=0){
                 System.out.println(i);
             }
+        }
+    }
+
+    static void exercice14(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Veuillez saisir un livret : ");
+        int userInput = input.nextInt();
+
+        for (int i = 1; i < 12+1; i++) {
+            int sum = i * userInput;
+            System.out.println(i + " x " +userInput + " = " + sum);
         }
     }
 }
