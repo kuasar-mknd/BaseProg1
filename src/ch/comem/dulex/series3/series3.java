@@ -28,6 +28,7 @@ public class series3 {
                 case 10 -> exercice10();
                 case 11 -> exercice11();
                 case 12 -> exercice12();
+                case 13 -> exercice13();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -288,5 +289,39 @@ public class series3 {
         }
 
 
+    }
+    static void exercice13(){
+        int max = 10;
+        int min = 0;
+
+        for (int i = min; i < max+1; i++) {
+            if(i%2 == 0){
+                System.out.println(i);
+            }
+        }
+
+        max= 100;
+        min=0;
+
+        System.out.println("");
+        for (int i = min; i < max+1; i++) {
+            if(i%2 == 0 && i%7 == 0){
+                System.out.println(i);
+            }
+        }
+
+        System.out.println("");
+        for (int i = min; i < max+1; i++) {
+            if(i%2 == 0 && i%7 == 0 && i%3 ==0){
+                System.out.println(i);
+            }
+        }
+
+        System.out.println("");
+        for (int i = min; i < max+1; i++) {
+            if(i%2 == 0 && i%7 == 0 && i%3 !=0){
+                System.out.println(i);
+            }
+        }
     }
 }
