@@ -27,6 +27,7 @@ public class series4 {
                 case 7 -> exercice7();
                 case 8 -> exercice8();
                 case 9 -> exercice9();
+                case 10 -> exercice10();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -226,6 +227,61 @@ public class series4 {
             }
             System.out.println();
         }
+
+    }
+
+    static void exercice10(){
+        Scanner input = new Scanner(System.in);
+
+        int numberOfPlayer, tempWinner, tempLooser, tempSum;
+        int numberOfHole = 18;
+        String[] arrayNameOfPlayer;
+        int[][] arrayTryPerPlayer;
+        tempWinner = numberOfHole*7;
+        tempLooser = 0;
+        tempSum = 0;
+
+
+        String winnerName, looserName;
+        winnerName = "";
+        looserName = "";
+
+        System.out.print("\nEntrez le nombre de joueurs : ");
+        numberOfPlayer = input.nextInt();
+        arrayTryPerPlayer = new int[numberOfPlayer][numberOfHole];
+        arrayNameOfPlayer = new String[numberOfPlayer];
+
+        for (int i = 0; i < numberOfPlayer; i++) {
+            System.out.print("\nSaissisez le nom du joueur " + (i+1) + " : ");
+            arrayNameOfPlayer[i] = input.next();
+        }
+
+        for (int i = 0; i < numberOfPlayer; i++) {
+            System.out.println("");
+            for (int j = 0; j < numberOfHole; j++) {
+                System.out.print("Saisissez le nombre d'essai pour " + arrayNameOfPlayer[i] + " au trou " + j + " (si pas réussi rentrez 7): ");
+                arrayTryPerPlayer[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i < numberOfPlayer; i++) {
+            tempSum = 0;
+            for (int j = 0; j < numberOfHole; j++) {
+                tempSum += arrayTryPerPlayer[i][j];
+            }
+            if(tempSum < tempWinner) {
+                tempWinner = tempSum;
+                winnerName = arrayNameOfPlayer[i];
+            }
+            else if(tempSum > tempLooser){
+                tempLooser = tempSum;
+                looserName = arrayNameOfPlayer[i];
+            }
+        }
+        if(tempLooser == tempWinner){
+            System.out.println("Aucun gagnant ou perdant, il y a égalité");
+        }
+        System.out.println("Le gagnant est " + winnerName + " et le perdant est " + looserName);
 
     }
 }
