@@ -1,6 +1,5 @@
 package ch.comem.dulex;
 
-
 import ch.comem.dulex.series1.series1;
 import ch.comem.dulex.series2.series2;
 import ch.comem.dulex.series3.series3;
@@ -25,7 +24,7 @@ public class exercisesList {
                 case 3 -> series3.main(null);
                 case 4 -> series4.main(null);
                 case 0 -> flag = false;
-                default -> System.out.println("L'exercice n'esxiste pas ...");
+                default -> System.out.println("La série n'esxiste pas ...");
             }
         }
 
