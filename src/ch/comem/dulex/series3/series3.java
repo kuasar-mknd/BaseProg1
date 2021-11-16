@@ -1,6 +1,7 @@
 package ch.comem.dulex.series3;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -29,7 +30,11 @@ public class series3 {
                 case 10 -> exercice10();
                 case 11 -> exercice11();
                 case 12 -> exercice12();
-                case 0 -> flag = false;
+                case 13 -> exercice13();
+                case 14 -> exercice14();
+                case 15 -> exercice15();
+                case 16 -> exercice16();
+                case 17 -> exercice17();
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
@@ -283,7 +288,7 @@ public class series3 {
                     lastCase = true;
                 }
             }
-            if(chessboardLenght%2==0) {
+            if (chessboardLenght % 2 == 0) {
                 lastCase = !lastCase;
             }
             System.out.print("\n");
@@ -291,4 +296,145 @@ public class series3 {
 
 
     }
+
+    static void exercice13() {
+        int max = 10;
+        int min = 0;
+
+        for (int i = min; i < max + 1; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        max = 100;
+        min = 0;
+
+        System.out.println();
+        for (int i = min; i < max + 1; i++) {
+            if (i % 2 == 0 && i % 7 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        System.out.println();
+        for (int i = min; i < max + 1; i++) {
+            if (i % 2 == 0 && i % 7 == 0 && i % 3 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        System.out.println();
+        for (int i = min; i < max + 1; i++) {
+            if (i % 2 == 0 && i % 7 == 0 && i % 3 != 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    static void exercice14() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Veuillez saisir un livret : ");
+        int userInput = input.nextInt();
+
+        for (int i = 1; i < 12 + 1; i++) {
+            int sum = i * userInput;
+            System.out.println(i + " x " + userInput + " = " + sum);
+        }
+    }
+
+    static void exercice15() {
+        Random random = new Random();
+        int numberOfLaunch = 1000;
+        int rand;
+        int numberOfOne = 0;
+        int numberOfTwo = 0;
+
+        for (int i = 0; i < numberOfLaunch; i++) {
+            rand = random.nextInt(2) + 1;
+            if (rand == 1) {
+                numberOfOne++;
+            } else if (rand == 2) {
+                numberOfTwo++;
+            }
+        }
+
+        System.out.println("Pile : " + numberOfOne);
+        System.out.println("Face : " + numberOfTwo);
+    }
+
+    static void exercice16() {
+        Random random = new Random();
+        int numberOfLaunch = 1000;
+        int rand;
+        int numberOfOne = 0;
+        int numberOfTwo = 0;
+        int maxOfOne = 0;
+        int counterMaxOfOne = 0;
+        int maxOfTwo = 0;
+        int counterMaxOfTwo = 0;
+
+        boolean flag = false;
+
+        for (int i = 0; i < numberOfLaunch; i++) {
+            rand = random.nextInt(2) + 1;
+            if (rand == 1) {
+                if (counterMaxOfTwo > maxOfTwo) {
+                    maxOfTwo = counterMaxOfTwo;
+                }
+                numberOfOne++;
+                if (!flag) {
+                    counterMaxOfOne = 0;
+                }
+                counterMaxOfOne++;
+                flag = true;
+
+            } else if (rand == 2) {
+                if (counterMaxOfOne > maxOfOne) {
+                    maxOfOne = counterMaxOfOne;
+                }
+                numberOfTwo++;
+                if (flag) {
+                    counterMaxOfTwo = 0;
+                }
+                counterMaxOfTwo++;
+                flag = false;
+            }
+        }
+
+        System.out.println("Pile : " + numberOfOne + " max à la suite : " + maxOfOne);
+        System.out.println("Face : " + numberOfTwo + " max à la suite : " + maxOfTwo);
+    }
+    static void exercice17(){
+        Random random = new Random();
+        Scanner input = new Scanner(System.in);
+        int userValue = 0;
+        int minAltitude = 1000;
+        int maxAltitude = 2000;
+        int rand = random.nextInt(minAltitude, maxAltitude);
+        int counterOfTry =0 ;
+        do{
+            System.out.print("Entrez une valeur entre "+minAltitude+" et "+maxAltitude+" : ");
+            userValue = input.nextInt();
+            if(userValue < minAltitude || userValue > maxAltitude){
+                System.out.println("Vous avez saisi une valeur en dehors du maximum ou du minimum");
+            }
+            else{
+                if(userValue == rand){
+                    System.out.println("Bravo vous avez trouvé la hauteur du dahu !");
+                }
+                else if(userValue>rand){
+                    System.out.println("Vous êtes au dessus du dahu !");
+                }
+                else {
+                    System.out.println("Vous êtes en dessous du dahu !");
+                }
+                counterOfTry++;
+            }
+
+        }while(userValue != rand);
+        System.out.println("En " + counterOfTry + " essais");
+    }
 }
+
