@@ -1,9 +1,9 @@
-package ch.comem.dulex.seriesX;
+package ch.comem.dulex.series5;
 
 import java.util.Scanner;
 
 
-public class seriesX {
+public class series5 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -15,8 +15,9 @@ public class seriesX {
             intChoice = input.nextInt();
 
             switch (intChoice) {
-                case 1 -> ...;
+                case 1 -> System.out.println("hello");
                 default -> System.out.println("L'exercice n'esxiste pas ...");
             }
         }
     }
+}
