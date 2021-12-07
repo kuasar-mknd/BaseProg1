@@ -1,26 +1,66 @@
 package ch.comem.dulex.series5;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 
 public class cavalier {
+
+    private static final char knightChar = 'P';
+    private static final char knightAlreadyPass = 'X';
+    private static final char knightWhiteCase = 'O';
+    private static final char knightBlackCase = '#';
+    private static final int knightBoardCase = 50;
+
     public static void main(String[] args) {
-        printKnightBoard(createKnightBoard(8, 'O', '#'));
+
+        playKnight();
     }
 
-    private static void playKnight(){
+    private static void playKnight() {
         //TODO
+        String[][] knightBoard = createKnightBoard(knightBoardCase, knightWhiteCase, knightBlackCase);
+        printKnightBoard(knightBoard);
+        moveToNextPosition(knightBoard);
     }
 
-    private static void checkNextPosition(){
-        //TODO
+    private static int[] checkNextPosition(String[][] knightBoard, String nextPosition) {
+        //TODO problème liée au contain (les espaces et tab)
+        char coordinateX = nextPosition.charAt(0);
+        char coordinateY = nextPosition.charAt(1);
+        int[] index = {0, 0};
+
+        for (int i = 0; i < knightBoard.length; i++) {
+            if (Objects.equals(knightBoard[0][i], String.valueOf(coordinateX))) {
+                index[0] = i;
+                break;
+            }
+        }
+        for (int i = 0; i < knightBoard.length; i++) {
+            if (Objects.equals(knightBoard[i][0], "\t" + coordinateY + "\t")) {
+                index[1] = i;
+                break;
+            }
+        }
+
+        if (Objects.equals(knightBoard[index[0]][index[1]], String.valueOf(knightAlreadyPass)) && Objects.equals(knightBoard[index[0]][index[1]], String.valueOf(knightChar))) {
+            index[0] = 0;
+            index[1] = 0;
+        }
+
+        return index;
     }
 
-    private static void moveToNextPosition(){
-        //TODO
+    private static void moveToNextPosition(String[][] knightBoard) {
+        String question = "Quel est votre prochain mouvement ? ";
+        int[] nextMove;
+
+        do {
+            nextMove = checkNextPosition(knightBoard, askUserPosition(question));
+        } while (nextMove[0] == 0 && nextMove[1] == 0);
+
+        knightBoard[nextMove[0]][nextMove[1]] = String.valueOf(knightChar);
     }
 
     /**
@@ -29,7 +69,7 @@ public class cavalier {
      * @param outputQuestion Texte à afficher
      * @return valeur saisie par l'utilisateur
      */
-    private static String askUserPosition(String outputQuestion){
+    private static String askUserPosition(String outputQuestion) {
         Scanner input = new Scanner(System.in);
         System.out.print(outputQuestion);
         return input.nextLine();
@@ -97,6 +137,7 @@ public class cavalier {
 
     /**
      * Impression du plateau de jeu
+     *
      * @param knightBoard Tableau contenant le jeu
      */
     private static void printKnightBoard(String[][] knightBoard) {
