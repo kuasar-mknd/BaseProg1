@@ -1,4 +1,4 @@
-package ch.comem;
+package ch.comem.dulex.series6.exercice3;
 
 import java.util.Arrays;
 
@@ -7,17 +7,17 @@ import java.util.Arrays;
 public class DualPivotQuickSort {
 
     public static void sort(int[] arr) {
-        dualPivotQuickSort(arr, 0, arr.length-1);
+        dualPivotQuickSort(arr, 0, arr.length - 1);
     }
 
-    private static void swap(int[] arr, int i, int j) {
+    private static void swapDualPivotQuickSort(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
     private static void dualPivotQuickSort(int[] arr,
-                                   int low, int high) {
+                                           int low, int high) {
         if (low < high) {
 
             // piv[] stores left pivot and right pivot.
@@ -34,7 +34,7 @@ public class DualPivotQuickSort {
 
     private static int[] partition(int[] arr, int low, int high) {
         if (arr[low] > arr[high])
-            swap(arr, low, high);
+            swapDualPivotQuickSort(arr, low, high);
 
         // p is the left pivot, and q
         // is the right pivot.
@@ -46,7 +46,7 @@ public class DualPivotQuickSort {
 
             // If elements are less than the left pivot
             if (arr[k] < p) {
-                swap(arr, k, j);
+                swapDualPivotQuickSort(arr, k, j);
                 j++;
             }
 
@@ -56,11 +56,11 @@ public class DualPivotQuickSort {
                 while (arr[g] > q && k < g)
                     g--;
 
-                swap(arr, k, g);
+                swapDualPivotQuickSort(arr, k, g);
                 g--;
 
                 if (arr[k] < p) {
-                    swap(arr, k, j);
+                    swapDualPivotQuickSort(arr, k, j);
                     j++;
                 }
             }
@@ -70,8 +70,8 @@ public class DualPivotQuickSort {
         g++;
 
         // Bring pivots to their appropriate positions.
-        swap(arr, low, j);
-        swap(arr, high, g);
+        swapDualPivotQuickSort(arr, low, j);
+        swapDualPivotQuickSort(arr, high, g);
 
         // Returning the indices of the pivots
         // because we cannot return two elements
@@ -81,7 +81,7 @@ public class DualPivotQuickSort {
 
     // Driver code
     public static void main(String[] args) {
-        int arr[] = {6, 4, 5, 12, 2, 11, 9};
+        int[] arr = {6, 4, 5, 12, 2, 11, 9};
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }

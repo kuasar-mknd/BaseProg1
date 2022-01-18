@@ -1,4 +1,4 @@
-package ch.comem;
+package ch.comem.dulex.series6.exercice3;
 
 import java.util.Arrays;
 
